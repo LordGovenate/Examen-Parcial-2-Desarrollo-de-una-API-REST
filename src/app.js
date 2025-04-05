@@ -3,16 +3,19 @@ const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
 require('dotenv').config();
+const errorHandler = require('./middlewares/errorHandler');
 
-const subjectsRoutes = require('./routes/subjects');
+const subjectsRoutes = require('./routes/v1/subjects');
 
 app.use(express.json());
 
 // Rutas de la API
-app.use('/api/subjects', subjectsRoutes);
+app.use('/api/v1/subjects', subjectsRoutes);
 
 // Documentación Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

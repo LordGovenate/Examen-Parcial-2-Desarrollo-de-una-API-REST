@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const subjectsController = require('../controllers/subjectsController');
+const subjectsController = require('../../controllers/subjectsController');
+const validateSubject = require('../../validators/subjectValidator');
 
 // Endpoints CRUD
-router.post('/', subjectsController.create);
+router.post('/', validateSubject, subjectsController.create);
 router.get('/:id', subjectsController.getById);
-router.put('/:id', subjectsController.update);
+router.put('/:id', validateSubject, subjectsController.update);
 router.delete('/:id', subjectsController.delete);
 
 // Endpoint con paginación
