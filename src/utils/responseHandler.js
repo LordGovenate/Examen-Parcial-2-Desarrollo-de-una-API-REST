@@ -1,19 +1,20 @@
-
-exports.successResponse = (res, data = {}, message = 'Operación exitosa', status = 200) => {
-    res.status(status).json({
+function successResponse(res, data, message = 'Successful operation', statusCode = 200) {
+    return res.status(statusCode).json({
       success: true,
       message,
       data
     });
-  };
+  }
   
-  exports.errorResponse = (res, message = 'Error del servidor', status = 500, errors = null) => {
-    const response = {
+  function errorResponse(res, message = 'Internal Server Error', statusCode = 500) {
+    return res.status(statusCode).json({
       success: false,
       message
-    };
-    if (errors) response.errors = errors;
+    });
+  }
   
-    res.status(status).json(response);
+  module.exports = {
+    successResponse,
+    errorResponse
   };
   

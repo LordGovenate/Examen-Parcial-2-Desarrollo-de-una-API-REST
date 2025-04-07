@@ -1,23 +1,20 @@
 const express = require('express');
-const app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
-require('dotenv').config();
 const errorHandler = require('./middlewares/errorHandler');
+const subjectRoutes = require('./interfaces/routes/v1/subjectRoutes');
 
-const subjectsRoutes = require('./routes/v1/subjects');
+const app = express();
 
 app.use(express.json());
 
-// Rutas de la API
-app.use('/api/v1/subjects', subjectsRoutes);
+// Rutas versionadas
+app.use('/api/v1/subjects', subjectRoutes);
 
-// Documentación Swagger
+// Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+// Manejo de errores
 app.use(errorHandler);
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`API REST escuchando en el puerto ${port}`);
-});
+module.exports = app;
