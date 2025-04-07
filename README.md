@@ -20,7 +20,7 @@ Esta API REST permite gestionar materias escolares, implementando operaciones CR
 1. **Clonar el repositorio:**
 
    ```bash
-   git clone <URL-del-repositorio>
+   git clone <https://github.com/LordGovenate/Examen-Parcial-2-Desarrollo-de-una-API-REST.git>
    cd api-rest
 
 Hostname: 127.0.0.1
