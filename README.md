@@ -37,7 +37,7 @@ docker-compose up
 http://localhost:3000/api-docs
 
 ## Probar en postman (POST)
-http://localhost:3000/api/subjects
+http://localhost:3000/api/v1/subjects
 
 {
   "name": "Matemáticas",
@@ -45,10 +45,10 @@ http://localhost:3000/api/subjects
 }
 
 ## Probar en postman (GET)
-http://localhost:3000/api/subjects/1
+http://localhost:3000/api/v1/subjects/3
 
 ## Probar en postman (PUT)
-http://localhost:3000/api/subjects/2
+http://localhost:3000/api/v1/subjects/3
 
 {
   "name": "Historia Actualizada",
@@ -56,5 +56,7 @@ http://localhost:3000/api/subjects/2
 }
 
 ## Probar en postman (DELETE)
+http://localhost:3000/api/v1/subjects/3
 
-http://localhost:3000/api/subjects/2
+## Probar en postman (GET paginacion)
+http://localhost:3000/api/v1/subjects?page=1&size=10
